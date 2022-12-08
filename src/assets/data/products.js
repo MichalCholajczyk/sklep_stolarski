@@ -31,10 +31,10 @@ import productImg25 from "../images/wireless-03.png";
 const products = [
   {
     id: "01",
-    productName: "Stone and Beam Westview ",
+    productName: "Hot Dawg ",
     imgUrl: "https://m.media-amazon.com/images/I/41GNrhBwBPL._AC_SY780_.jpg",
     category: "sofa",
-    price: 193,
+    price: 69,
     shortDesc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
     description:
