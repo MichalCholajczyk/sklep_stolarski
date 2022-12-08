@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import products from "../assets/data/products";
+import products from "../../assets/data/products";
 
-import Helmet from "../components/Helmet/Helmet";
-import "../styles/home.css";
+import Helmet from "../../components/Helmet/Helmet";
+import "./home.css";
 
 import { Container, Row, Col } from "reactstrap";
-import heroImg from "../assets/images/hero-img.png";
+import heroImg from "../../assets/images/hero-img.png"
 
-import Services from "../services/Services";
-import ProductsList from "../components/UI/ProductsList";
+import Services from "../../services/Services";
+import ProductsList from "../../components/UI/ProductsList";
 
-import Clock from "../components/UI/Clock";
+import Clock from "../../components/UI/Clock/Clock";
 
-import counterImg from "../assets/images/counter-timer-img.png";
+import counterImg from "../../assets/images/counter-timer-img.png";
 
 const Home = () => {
 	const [trendingProducts, setTrendingProducts] = useState([]);

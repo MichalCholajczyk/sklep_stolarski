@@ -2,13 +2,13 @@ import {Routes, Route, Navigate } from 'react-router-dom'
 
 
 import React from 'react'
-import Home from '../pages/Home'
-import Shop from '../pages/Shop'
-import Cart from '../pages/Cart'
-import ProductDetails from '../pages/ProductDetails'
-import Checkout from '../pages/Checkout'
-import Login from '../pages/Login'
-import Signup from '../pages/Signup'
+import Home from '../pages/Home/Home'
+import Shop from '../pages/Shop/Shop'
+import Cart from '../pages/Cart/Cart'
+import ProductDetails from '../pages/ProductDetails/ProductDetails'
+import Checkout from '../pages/Checkout/Checkout'
+import Login from '../pages/Login/Login'
+import Signup from '../pages/Signup/Signup'
 import { NavbarBrand } from 'reactstrap'
 
 const Routers = () => {
