@@ -49,10 +49,9 @@ const Header = () => {
 		return () => window.removeEventListener("scroll", stickyHeaderFunction)
 	})
 
-	//! Chujstwo nie działa naprawić później
 	const menuToggle = () => menuRef.current.classList.toggle('active__menu')
 
-	
+
 	return (
 		<header className="header" ref={headerRef}>
 			<Container>
