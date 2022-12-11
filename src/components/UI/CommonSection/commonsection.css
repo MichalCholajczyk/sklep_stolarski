@@ -1,0 +1,16 @@
+
+.common__section{
+   
+   background: linear-gradient(rgba(0, 0, 0, 0.519), rgba(0, 0, 0, 0.519)), url(../../../assets/images/single-sofa-01.jpg) no-repeat center center;
+
+   background-size: cover;
+   height: 200px; /*padding 100px 0px*/
+   display: flex;
+   align-items: center;
+
+}
+
+.common__section h1 {
+   color: white;
+   font-weight: 600;
+}
