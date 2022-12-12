@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect} from "react";
 
 import { NavLink } from "react-router-dom";
 import "./header.css";
@@ -9,7 +9,6 @@ import logo from "../../assets/images/eco-logo.png";
 import userIcon from "../../assets/images/user-icon.png";
 
 import { Container, Row } from "reactstrap";
-import { useSelector } from "react-redux";
 
 const nav__links = [
 	{
@@ -27,35 +26,27 @@ const nav__links = [
 ];
 
 const Header = () => {
-	const headerRef = useRef(null)
 
-	const menuRef = useRef(null)
+  const headerRef = useRef(null)
 
-	const totalQuantity = useSelector(state => state.cart.totalQuantity)
-	
+  const stickyHeaderFunction = ()=>{
+    window.addEventListener('scroll', ()=>{
+      if(
+        document.body.scrollTo>80 || 
+        document.documentElement.scrollTop > 80
+        ){
+        headerRef.current.classList.add('sticky__header')
+      }else{
+        headerRef.current.classList.remove('sticky__header')
+      }
+    })
+  }
 
-	const stickyHeaderFunction = () => {
-		window.addEventListener('scroll', () => {
-			if (
-				document.body.scrollTo > 80 ||
-				document.documentElement.scrollTop > 80
-			) {
-				headerRef.current.classList.add('sticky__header')
-			} else {
-				headerRef.current.classList.remove('sticky__header')
-			}
-		})
-	}
+  useEffect(() => {
+    stickyHeaderFunction()
 
-	useEffect(() => {
-		stickyHeaderFunction()
-
-		return () => window.removeEventListener("scroll", stickyHeaderFunction)
-	})
-
-	const menuToggle = () => menuRef.current.classList.toggle('active__menu')
-
-
+    return ()=>window.removeEventListener("scroll", stickyHeaderFunction)
+  })
 	return (
 		<header className="header" ref={headerRef}>
 			<Container>
@@ -68,7 +59,7 @@ const Header = () => {
 							</div>
 						</div>
 
-						<div className="navigation" ref={menuRef} onClick={menuToggle}>
+						<div className="navigation">
 							<ul className="menu">
 								{nav__links.map((item, index) => (
 									<li className="nav__item" key={index}>
@@ -87,17 +78,17 @@ const Header = () => {
 							</span>
 							<span className="cart__icon">
 								<i class="ri-shopping-cart-2-line"></i>
-								<span className="badge">{totalQuantity}</span>
+								<span className="badge">1</span>
 							</span>
 
 							<span>
 								<motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="UserIcon" />
 							</span>
-							<div className="mobile__menu">
-								<span onClick={menuToggle}>
-									<i class="ri-menu-line"></i>
-								</span>
-							</div>
+						<div className="mobile__menu">
+							<span>
+								<i class="ri-menu-line"></i>
+							</span>
+						</div>
 						</div>
 
 					</div>
