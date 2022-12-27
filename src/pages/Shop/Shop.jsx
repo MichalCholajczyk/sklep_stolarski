@@ -100,7 +100,7 @@ const Shop = () => {
 			<section className="pt-0">
 				<Container>
 					<Row>
-						{productsData.length === 0 ? <h1>Co ty żeś kurna wyszukał ?</h1> : <ProductsList data={productsData} />}
+						{productsData.length === 0 ? (<h1 className = "text-center fs-4">Brak produktu wariacie</h1>) : (<ProductsList data={productsData} />)}
 					</Row>
 				</Container>
 			</section>

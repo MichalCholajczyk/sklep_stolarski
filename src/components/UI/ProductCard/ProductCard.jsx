@@ -8,7 +8,9 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 
+
 const ProductCard = ({ item }) => {
+
 	const dispatch = useDispatch();
 
 	const addToCart = () => {
@@ -31,8 +33,8 @@ const ProductCard = ({ item }) => {
 			className="mb-2"
 		>
 			<div className="product__item">
-				<div className="product__img">
-					<Link to="/shop/">
+				<div className="product__img" >
+					<Link to={`/shop/${item.id}`}>
 						<motion.img
 							whileHover={{ scale: 0.9 }}
 							whileTap={{ scale: 0.8 }}
@@ -42,8 +44,8 @@ const ProductCard = ({ item }) => {
 					</Link>
 				</div>
 				<div className="p-2 product__info">
-					<h3 className="product__name">
-						<Link to="/shop/id">{item.productName}</Link>
+					<h3 className="product__name" >
+						<Link to={`/shop/${item.id}`}>{item.productName}</Link>
 					</h3>
 					<span>{item.category}</span>
 				</div>
@@ -60,5 +62,7 @@ const ProductCard = ({ item }) => {
 		</Col>
 	);
 };
+
+
 
 export default ProductCard;
