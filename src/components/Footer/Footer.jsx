@@ -93,9 +93,6 @@ const Footer = () => {
                   <p>zajebisciekreatywnymail@gmail,.com</p>
                 </ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
-                  <Link to="#">Zegarki</Link>
-                </ListGroupItem>
               </ListGroup>
             </div>
           </Col>
