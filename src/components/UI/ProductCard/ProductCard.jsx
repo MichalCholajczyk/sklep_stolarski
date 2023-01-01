@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 
 
 const ProductCard = ({ item }) => {
@@ -19,11 +19,11 @@ const ProductCard = ({ item }) => {
 				id: item.id,
 				productName: item.productName,
 				price: item.price,
-				image: item.imgUrl,
+				imgUrl: item.imgUrl,
 			})
 		);
 
-		toast.success("Product added sukcseskurwaly");
+		toast.success("Product added ");
 	};
 
 	return (

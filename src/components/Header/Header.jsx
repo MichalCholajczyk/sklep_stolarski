@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./header.css";
 
 import { motion } from "framer-motion";
@@ -30,6 +30,7 @@ const Header = () => {
 	const headerRef = useRef(null)
 
 	const menuRef = useRef(null)
+	const navigate = useNavigate()
 
 	const totalQuantity = useSelector(state => state.cart.totalQuantity)
 	
@@ -54,6 +55,10 @@ const Header = () => {
 	})
 
 	const menuToggle = () => menuRef.current.classList.toggle('active__menu')
+
+	const navigateToCart = ()=>{
+		navigate("/cart")
+	}
 
 
 	return (
@@ -85,7 +90,7 @@ const Header = () => {
 								<i class="ri-heart-line"></i>
 								<span className="badge">1</span>
 							</span>
-							<span className="cart__icon">
+							<span className="cart__icon" onClick={navigateToCart}>
 								<i class="ri-shopping-cart-2-line"></i>
 								<span className="badge">{totalQuantity}</span>
 							</span>
