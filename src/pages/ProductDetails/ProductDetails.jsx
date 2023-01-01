@@ -142,12 +142,12 @@ useEffect(()=>{
 										<div className="review__form">
 											<h4>Leave your experience</h4>
 											<form action="" onSubmit={submitHandler}>
-												<div className="group__form">
+												<div className="form__group">
 													<input type="text" placeholder="Enter name" ref={reviewUser}
 													required />
 												</div>
 
-												<div className="group__form d-flex align-items-center gap-5 group__rating">
+												<div className="form__group d-flex align-items-center gap-5 group__rating">
 													<motion.span whileTap={{scale:1.2}} onClick={() => setRating(1)}>
 														1<i class="ri-star-s-fill"></i>
 													</motion.span>
@@ -165,7 +165,7 @@ useEffect(()=>{
 													</motion.span>
 												</div>
 
-												<div className="group__form">
+												<div className="form__group">
 													<textarea
 													ref={reviewMsg} 
 													rows={4} 

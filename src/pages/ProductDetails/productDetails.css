@@ -57,24 +57,24 @@
   margin-bottom: 30px;
 }
 
-.group__form input,
-.group__form textarea{
+.form__group input,
+.form__group textarea{
   width: 100%;
   border: 1px solid var(--primary-color);
   border-radius: 5px;
   padding: 8px 20px;
 }
 
-.group__form input:focus,
-.group__form textarea:focus{
+.form__group input:focus,
+.form__group textarea:focus{
   outline: none;
 }
 
-.group__form{
+.form__group{
   margin-bottom: 30px;
 }
 
-.group__form span{
+.form__group span{
   display: flex;
   align-items: center;
   column-gap: 5px;
