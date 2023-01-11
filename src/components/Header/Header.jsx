@@ -10,6 +10,7 @@ import userIcon from "../../assets/images/user-icon.png";
 
 import { Container, Row } from "reactstrap";
 import { useSelector } from "react-redux";
+import useAuth from "../../custom-hooks/useAuth"
 
 const nav__links = [
 	{
@@ -24,6 +25,10 @@ const nav__links = [
 		path: "cart",
 		display: "Cart",
 	},
+	{
+		path: "login",
+		display: "Login",
+	}
 ];
 
 const Header = () => {
@@ -31,6 +36,7 @@ const Header = () => {
 
 	const menuRef = useRef(null)
 	const navigate = useNavigate()
+	const {currentUser} = useAuth()
 
 	const totalQuantity = useSelector(state => state.cart.totalQuantity)
 	
@@ -96,7 +102,7 @@ const Header = () => {
 							</span>
 
 							<span>
-								<motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="UserIcon" />
+								<motion.img className="user__Img" whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="chuj" />
 							</span>
 							<div className="mobile__menu">
 								<span onClick={menuToggle}>

@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import "./signup.css";
 import Helmet from "../../components/Helmet/Helmet";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
-import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, uploadBytesResumable, getDownloadURL, getStorage } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
 
-import { auth } from "../../firebase.config.js";
-import { storage } from "../../firebase.config.js";
-import { db } from "../../firebase.config.js";
+import { auth, storage, db } from "../../firebase.config";
 
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
 	const [username, setUsername] = useState("");
@@ -32,8 +30,12 @@ const Signup = () => {
 
 			const user = userCredential.user;
 
-			const storageRef = ref(storage, `images/${Date.now() + username}`);
+			//tego brakowało żeby sie pokazał awatar, męczyłem sie z tym 5 godzin zastanawiając sie czemu go niemoże wczytać.....
+			const storage = getStorage();
+
+			const storageRef = ref(storage, `images/${ Date.now() + username}`);
 			const uploadTask = uploadBytesResumable(storageRef, file);
+
 
 			uploadTask.on(
 				(error) => {
@@ -44,11 +46,11 @@ const Signup = () => {
 						//update user profile
 						await updateProfile(user, {
 							displayName: username,
-							photo: downloadURL,
+							photoURL: downloadURL,
 						});
 
 						//store user data in firestore database
-						await setDoc(doc(db, "users", user.uid), {
+						await setDoc(doc(db, 'users', user.uid), {
 							uid: user.uid,
 							displayName: username,
 							email,
@@ -58,7 +60,7 @@ const Signup = () => {
 				}
 			);
 
-			//			console.log(user);
+//		console.log(user);
 			setLoading(false);
 			toast.success("Podpisałeś pakt z diabłem/ stworzyłeś konto");
 			navigate("/login");

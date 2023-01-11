@@ -11,7 +11,7 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
-	const Navigate = useNavigate();
+	const navigate = useNavigate();
 	const signIn = async (e) => {
 		e.preventDefault();
 		setLoading(true);
@@ -21,10 +21,10 @@ const Login = () => {
 
 			const user = userCredential.user;
 
-			console.log(user.name);
+			console.log(user);
 			setLoading(false);
 			toast.success("zalogowanooo");
-			Navigate("/checkout");
+			navigate("/checkout");
 		} catch (error) {
 			setLoading(false);
 			toast.error(error.message);
@@ -54,7 +54,7 @@ const Login = () => {
 									</FormGroup>
 									<FormGroup className="form__group">
 										<input
-											type="password"
+											type="current-password"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 											placeholder="Enter your password"
