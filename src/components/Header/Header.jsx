@@ -12,6 +12,8 @@ import { Container, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import useAuth from "../../custom-hooks/useAuth"
 
+
+
 const nav__links = [
 	{
 		path: "home",
@@ -102,7 +104,7 @@ const Header = () => {
 							</span>
 
 							<span>
-								<motion.img className="user__Img" whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="chuj" />
+								<motion.img className="user__Img" whileTap={{ scale: 1.2 }} src={currentUser? currentUser.photoURL: userIcon} alt="chuj" />
 							</span>
 							<div className="mobile__menu">
 								<span onClick={menuToggle}>

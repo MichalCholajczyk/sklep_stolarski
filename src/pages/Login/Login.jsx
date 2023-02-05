@@ -6,18 +6,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
+import { getStorage } from "firebase/storage";
 
 const Login = () => {
+	// email state to store email input
 	const [email, setEmail] = useState("");
+	// password state to store password input
 	const [password, setPassword] = useState("");
+	// loading state to show loading spinner when submitting form
 	const [loading, setLoading] = useState(false);
+	// useNavigate hook to redirect user to the checkout page after successful login
 	const navigate = useNavigate();
+
+	// function to handle login form submission
 	const signIn = async (e) => {
+		// prevent default form submission
 		e.preventDefault();
 		setLoading(true);
 
 		try {
-			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+			// this function will sign in user if email and password match
+			const userCredential = await signInWithEmailAndPassword(auth, email, password, getStorage);
 
 			const user = userCredential.user;
 

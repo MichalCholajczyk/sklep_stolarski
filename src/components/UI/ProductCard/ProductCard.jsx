@@ -55,7 +55,7 @@ const ProductCard = ({ item }) => {
 						whileTap={{ scale: 1.2 }}
 						onClick={addToCart}
 					>
-						<i class="ri-add-line"></i>
+						<i class=" roundBuy__btn ri-add-line"></i>
 					</motion.span>
 				</div>
 			</div>
