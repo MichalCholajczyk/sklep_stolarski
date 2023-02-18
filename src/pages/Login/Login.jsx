@@ -63,7 +63,7 @@ const Login = () => {
 									</FormGroup>
 									<FormGroup className="form__group">
 										<input
-											type="current-password"
+											type="password"
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 											placeholder="Enter your password"
