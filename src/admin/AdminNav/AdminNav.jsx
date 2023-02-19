@@ -1,11 +1,11 @@
+// Import bibliotek i plików z projektu
 import React from "react";
 import { Container, Row } from "reactstrap";
-
 import useAuth from "../../custom-hooks/useAuth";
 import "./adminNav.css";
-
 import { NavLink } from "react-router-dom";
 
+// Konfiguracja nawigacji admina
 const admin__nav = [
 	{
 		display: "Dashboard",
@@ -25,7 +25,9 @@ const admin__nav = [
 	},
 ];
 
+// Komponent nawigacji admina
 const AdminNav = () => {
+	// Pobranie informacji o użytkowniku z hooka useAuth
 	const { currentUser } = useAuth();
 
 	return (
@@ -35,7 +37,7 @@ const AdminNav = () => {
 					<Container>
 						<div className="admin__nav-wrapper-top">
 							<div className="logo">
-								<h3>Zajebista Strona</h3>
+								<h3>Picobello Strona</h3>
 							</div>
 
 							<div className="search__box">
@@ -66,7 +68,7 @@ const AdminNav = () => {
 							<ul className="admin__menu-list">
 								{admin__nav.map((item, index) => (
 									<li className="admin__menu-item" key={index}>
-										<NavLink to={item.path} className={navClass => (navClass.isActive ? "active__admin-menu" : "")}>
+										<NavLink to={item.path} className={(navClass) => (navClass.isActive ? "active__admin-menu" : "")}>
 											{item.display}
 										</NavLink>
 									</li>

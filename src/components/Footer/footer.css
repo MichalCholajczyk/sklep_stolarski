@@ -1,60 +1,59 @@
-.footer{
-    padding-top: 60px;
-    padding-bottom: 30px;
-    background: var(--primary-color);
+.footer {
+	padding-top: 60px;
+	padding-bottom: 30px;
+	background: var(--primary-color);
 }
 
-.footer__text{
-    line-height: 30px;
-    color: white;
+.footer__text {
+	line-height: 30px;
+	color: white;
 }
 
 .footer__quick-links ul li {
-    background: transparent !important;
+	background: transparent !important;
 }
 
 .footer__quick-links ul li a {
-    color: white;
+	color: white;
 }
 
 .footer-title {
-    margin-bottom: 20px;
-    color: white;
-    font-size: 1.1rem;
+	margin-bottom: 20px;
+	color: white;
+	font-size: 1.1rem;
 }
 
-.quick__links__title{
-    margin-bottom: 20px;
-    color: white;
-    font-size: 1.1rem;
+.quick__links__title {
+	margin-bottom: 20px;
+	color: white;
+	font-size: 1.1rem;
 }
 
-.footer__contact li{
-    color: white;
+.footer__contact li {
+	color: white;
 }
 
 .footer__contact li span,
 .footer__contact li p {
-    color: white;
+	color: white;
 }
 
-.footer__contact li span{
-    font-size: 1.2rem;
+.footer__contact li span {
+	font-size: 1.2rem;
 }
 
-.footer__contact li p{
-    font-size: 0.9rem;
+.footer__contact li p {
+	font-size: 0.9rem;
 }
 
-.footer__copyright{
-    text-align: center;
-    color: white;
-    margin-top: 50px;
-
+.footer__copyright {
+	text-align: center;
+	color: white;
+	margin-top: 50px;
 }
 
-.footer__copyright1{
-    text-align: center;
-    color: white;
-    font-size: 0.8rem;
+.footer__copyright1 {
+	text-align: center;
+	color: white;
+	font-size: 0.8rem;
 }

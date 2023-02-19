@@ -5,8 +5,8 @@ import { Outlet } from "react-router-dom";
 
 const ProtectedRoute = () => {
 	const { currentUser } = useAuth();
-
-	return currentUser ? <Outlet/> : <Navigate to="/login" />;
+	// jeśli currentUser jest prawdziwy, zwróć komponent Outlet, w przeciwnym wypadku przekieruj do strony logowania
+	return currentUser ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

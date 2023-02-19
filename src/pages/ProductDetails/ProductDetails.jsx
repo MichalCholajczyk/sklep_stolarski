@@ -1,3 +1,4 @@
+// Import React i kilka modułów z react-router i bibliotek zewnętrznych oraz kilka komponentów i hooków React
 import React, { useState, useRef, useEffect } from "react";
 import "./productDetails.css";
 
@@ -11,36 +12,40 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
 import { toast } from "react-toastify";
 
+// Import Firebase i hook useGetData do pobierania danych z bazy danych Firebase
 import { db } from "../../firebase.config";
-import {doc, getDoc} from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import useGetData from "../../custom-hooks/useGetData";
 
+// Utwórz komponent ProductDetails, który pobiera dane produktu z bazy danych Firebase i wyświetla je na stronie
 const ProductDetails = () => {
+	// Użyj hook useState do przechowywania danych produktu (nazwy, opisu, obrazka, kategorii, ceny)
 	const [product, setProduct] = useState({
 		imgUrl: "",
 		productName: "",
 		price: "",
 		description: "",
 		shortDesc: "",
-		category: ""
+		category: "",
 	});
-
+	// Użyj hook useState do przechowywania wybranej karty (opis lub recenzje)
 	const [tab, setTab] = useState("desc");
+	// Użyj hook useState do przechowywania oceny produktu
 	const [rating, setRating] = useState(null);
+	// Użyj hook useRef do odwołania się do inputów użytkownika
 	const reviewUser = useRef("");
 	const reviewMsg = useRef("");
+	// Użyj hook useDispatch do wysłania akcji do magazynu w celu dodania przedmiotu do koszyka
 	const dispatch = useDispatch();
-
+	// Użyj hook useParams do pobrania ID produktu z adresu URL
 	const { id } = useParams();
-
-	const { data: products } = useGetData('products');
-
-	const docRef = doc(db,'products', id);
-
+	// Użyj hook useGetData, aby pobrać listę produktów z bazy danych Firebase
+	const { data: products } = useGetData("products");
+	// Użyj funkcji doc i getDoc z pakietu firebase/firestore, aby pobrać dane produktu z bazy danych Firebase na podstawie jego ID
+	const docRef = doc(db, "products", id);
 	useEffect(() => {
 		const getProduct = async () => {
 			const docSnap = await getDoc(docRef);
-
 			if (docSnap.exists()) {
 				setProduct(docSnap.data());
 			} else {
@@ -49,11 +54,11 @@ const ProductDetails = () => {
 		};
 		getProduct();
 	}, []);
-
+	// Wyodrębnij zmienne z obiektu produktu za pomocą destrukturyzacji
 	const { imgUrl, productName, price, /* avgRating, reviews, */ description, shortDesc, category } = product;
-
+	// Użyj metody filter, aby wybrać produkty z tej samej kategorii
 	const relatedProducts = products.filter((item) => item.category === category);
-
+	// Utwórz funkcję do obsługi zdarzenia submit, która zbiera dane recenzji produktu i wysyła je do magazynu Redux
 	const submitHandler = (e) => {
 		e.preventDefault();
 
@@ -147,7 +152,7 @@ const ProductDetails = () => {
 									Opis
 								</h6>
 								<h6 className={`${tab === "rev" ? "active__tab" : " "}`} onClick={() => setTab("rev")}>
-									 Recenzje
+									Recenzje
 								</h6>
 							</div>
 

@@ -1,3 +1,5 @@
+// Importowanie potrzebnych bibliotek i modułów
+
 import React, { useRef, useEffect } from "react";
 
 import { NavLink, useNavigate, Link } from "react-router-dom";
@@ -14,6 +16,8 @@ import useAuth from "../../custom-hooks/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
+
+// Deklaracja listy linków w nagłówku
 
 const nav__links = [
 	{
@@ -34,16 +38,25 @@ const nav__links = [
 	},
 ];
 
+// Deklaracja komponentu nagłówka
+
 const Header = () => {
+	// Ustawienie referencji do elementów DOM
+
 	const headerRef = useRef(null);
 
 	const menuRef = useRef(null);
 	const navigate = useNavigate();
+	// Pobranie bieżącego użytkownika
 	const { currentUser } = useAuth();
+
+	// Pobranie ilości produktów w koszyku
 
 	const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
 	const profileActionRef = useRef(null);
+
+	// Funkcja dodająca klasę "sticky__header" do nagłówka po przewinięciu strony o 80 pikseli
 
 	const stickyHeaderFunction = () => {
 		window.addEventListener("scroll", () => {
@@ -55,14 +68,20 @@ const Header = () => {
 		});
 	};
 
-const logout =()=>{
-	signOut(auth).then(()=>{
-		toast.success('logged out successfully')
-		navigate("/home")
-	}).catch(err=>{
-		toast.error(err.message)
-	})
-}
+	// Funkcja wylogowująca użytkownika
+
+	const logout = () => {
+		signOut(auth)
+			.then(() => {
+				toast.success("logged out successfully");
+				navigate("/home");
+			})
+			.catch((err) => {
+				toast.error(err.message);
+			});
+	};
+
+	// Ustawienie efektu odświeżania dla funkcji dodającej klasę "sticky__header"
 
 	useEffect(() => {
 		stickyHeaderFunction();
@@ -70,13 +89,19 @@ const logout =()=>{
 		return () => window.removeEventListener("scroll", stickyHeaderFunction);
 	});
 
+	// Funkcja pokazująca/ukrywająca menu
+
 	const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+
+	// Funkcja przekierowująca do koszyka
 
 	const navigateToCart = () => {
 		navigate("/cart");
 	};
 
-	const toggleProfileActions = () => profileActionRef.current.classList.toggle("show__profileActions")
+	// Funkcja pokazująca/ukrywająca sekcję z akcjami użytkownika
+
+	const toggleProfileActions = () => profileActionRef.current.classList.toggle("show__profileActions");
 
 	return (
 		<header className="header" ref={headerRef}>
@@ -86,7 +111,7 @@ const logout =()=>{
 						<div className="logo">
 							<img src={logo} alt="logo" />
 							<div>
-								<h1>ZajebistaStrona</h1>
+								<h1>PicobelloStrona</h1>
 							</div>
 						</div>
 
@@ -112,14 +137,15 @@ const logout =()=>{
 								<span className="badge">{totalQuantity}</span>
 							</span>
 
-							<div className="profile" >
-								<motion.img whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="chuj" 
-								onClick={toggleProfileActions}
+							<div className="profile">
+								<motion.img
+									whileTap={{ scale: 1.2 }}
+									src={currentUser ? currentUser.photoURL : userIcon}
+									alt="chuj"
+									onClick={toggleProfileActions}
 								/>
 
-								<div className="profile__actions" 
-								ref={profileActionRef} 
-								onClick={toggleProfileActions}>
+								<div className="profile__actions" ref={profileActionRef} onClick={toggleProfileActions}>
 									{currentUser ? (
 										<span onClick={logout}>Logout</span>
 									) : (
@@ -127,7 +153,6 @@ const logout =()=>{
 											<Link to="/signup">Signup</Link>
 											<Link to="/login">Login</Link>
 											<Link to="/dashboard">Dashboard</Link>
-
 										</div>
 									)}
 								</div>

@@ -1,19 +1,23 @@
+// Importowanie niezbędnych bibliotek
 import React from "react";
 import "./footer.css";
-import { Container, Row, Col, ListGroup,  ListGroupItem} from "reactstrap";
+import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+	// Deklaracja zmiennej year przechowującej aktualny rok
+	const year = new Date().getFullYear();
 
-  const year = new Date().getFullYear();
+	// Renderowanie komponentu Footer
 	return (
 		<footer className="footer">
 			<Container>
 				<Row>
+					{/* Kolumna 1 */}
 					<Col lg="4" className="mb-4" md="6">
 						<div className="logo">
 							<div>
-								<h1 className="text-white">ZajebistaStrona</h1>
+								<h1 className="text-white">PicobelloStrona</h1>
 							</div>
 						</div>
 						<p className="footer__text mt-4">
@@ -23,83 +27,88 @@ const Footer = () => {
 						</p>
 					</Col>
 
-
+					{/* Kolumna 2 */}
 
 					<Col lg="3 " md="3" className="mb-4">
-            <div className="footer__quick-links">
-              <h4 className="quick__links__title">Top Categories</h4>
-              <ListGroup>
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">MobilePhones</Link>
-                </ListGroupItem>
+						<div className="footer__quick-links">
+							<h4 className="quick__links__title">Top Categories</h4>
+							<ListGroup>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">MobilePhones</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Kanapy dla opornych</Link>
-                </ListGroupItem>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Kanapy dla opornych</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Tak-krzesła</Link>
-                </ListGroupItem>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Tak-krzesła</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Zegarki</Link>
-                </ListGroupItem>
-              </ListGroup>
-            </div>
-          </Col>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Zegarki</Link>
+								</ListGroupItem>
+							</ListGroup>
+						</div>
+					</Col>
 
-
+					{/* Kolumna 3 */}
 
 					<Col lg="2" md="3" className="mb-4">
-          <div className="footer__quick-links">
-              <h4 className="quick__links__title">Przydatne Linki</h4>
-              <ListGroup>
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Sklep</Link>
-                </ListGroupItem>
+						<div className="footer__quick-links">
+							<h4 className="quick__links__title">Przydatne Linki</h4>
+							<ListGroup>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Sklep</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Koszyk</Link>
-                </ListGroupItem>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Koszyk</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Login</Link>
-                </ListGroupItem>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Login</Link>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Zasady prywatności</Link>
-                </ListGroupItem>
-              </ListGroup>
-            </div>
-          </Col>
+								<ListGroupItem className="ps-0 border-0">
+									<Link to="#">Zasady prywatności</Link>
+								</ListGroupItem>
+							</ListGroup>
+						</div>
+					</Col>
+					{/* Kolumna 4 */}
 
 					<Col lg="3" md="3" className="mb-4">
-          <div className="footer__quick-links">
-              <h4 className="quick__links__title">Kontakt</h4>
-              <ListGroup className="footer__contact">
-                <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
-                  <span><i class="ri-map-pin-line"></i></span>
-                  <p>Kwiatkowskiej 19, Łódź, Polska</p>
-                </ListGroupItem>
+						<div className="footer__quick-links">
+							<h4 className="quick__links__title">Kontakt</h4>
+							<ListGroup className="footer__contact">
+								<ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
+									<span>
+										<i class="ri-map-pin-line"></i>
+									</span>
+									<p>Kwiatkowskiej 19, Łódź, Polska</p>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
-                <span><i class="ri-phone-line"></i></span>
-                <p>+48213742069</p>
-                </ListGroupItem>
+								<ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
+									<span>
+										<i class="ri-phone-line"></i>
+									</span>
+									<p>+48213742069</p>
+								</ListGroupItem>
 
-                <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
-
-                  <span><i class="ri-mail-line"></i></span>
-                  <p>zajebisciekreatywnymail@gmail,.com</p>
-                </ListGroupItem>
-
-              </ListGroup>
-            </div>
-          </Col>
-          <Col lg='12'>
-            <p className="footer__copyright">Copyright {year} ™</p>
-            <p className="footer__copyright1">Zrobione przez biednego studenta polaka robaka</p>
-          </Col>
+								<ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
+									<span>
+										<i class="ri-mail-line"></i>
+									</span>
+									<p>zajebisciekreatywnymail@gmail,.com</p>
+								</ListGroupItem>
+							</ListGroup>
+						</div>
+					</Col>
+					<Col lg="12">
+						<p className="footer__copyright">Copyright {year} ™</p>
+						<p className="footer__copyright1">Zrobione przez biednego studenta polaka robaka</p>
+					</Col>
 				</Row>
 			</Container>
 		</footer>

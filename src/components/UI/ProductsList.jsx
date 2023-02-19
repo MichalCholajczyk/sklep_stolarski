@@ -1,14 +1,17 @@
+// Import biblioteki React
 import React from "react";
+
+// Import komponentu ProductCard
 import ProductCard from "./ProductCard/ProductCard";
 
-const ProductsList = ({data}) => {
+// Definicja komponentu ProductsList
+const ProductsList = ({ data }) => {
+	// Zwracamy listę komponentów ProductCard dla każdego elementu tablicy data
 	return (
 		<>
-		{
-			data?.map((item, index) => (
-				<ProductCard item={item} key={index}/>
-			))
-		}
+			{data?.map((item, index) => (
+				<ProductCard item={item} key={index} />
+			))}
 		</>
 	);
 };

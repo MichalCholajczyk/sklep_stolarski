@@ -1,3 +1,5 @@
+//importuje używane biblioteki i komponenty
+
 import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
@@ -61,17 +63,14 @@ const Home = () => {
 					<Row>
 						<Col lg="6" md="6">
 							<div className="hero__content">
-								<p className="hero__subtitle">Trending kurwa w roku {year}</p>
+								<p className="hero__subtitle">Trending in {year}</p>
 								<h2>Reject Plastik fantastik, Embrace drewno</h2>
 								<p>
-									Both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in
-									a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it
-									don't belong to me. Besides, I've already been through too much shit this morning over this case to
-									hand it over to your dumb ass.
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum cupiditate est pariatur repellat corrupti laudantium libero consequuntur doloribus inventore saepe labore, natus ab a, dicta nulla eum provident animi quod?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum cupiditate est pariatur repellat corrupti laudantium libero consequuntur doloribus inventore saepe labore, natus ab a, dicta nulla eum provident animi quod?
 								</p>
 
 								<motion.button whileTap={{ scale: 1.1 }} className="buy__btn">
-									<Link to="/shop">NO WE KUP</Link>
+									<Link to="/shop">Buy now</Link>
 								</motion.button>
 							</div>
 						</Col>
@@ -96,7 +95,7 @@ const Home = () => {
 				<Container>
 					<Row>
 						<Col lg="12">
-							<h2 className="section__title">Trending prodakts</h2>
+							<h2 className="section__title">Trending products</h2>
 						</Col>
 						{
 							loading ? <h5 className="fw-bold">Ładowanko....</h5> : <ProductsList data={trendingProducts} />
@@ -112,7 +111,7 @@ const Home = () => {
 				<Container>
 					<Row>
 						<Col lg="12">
-							<h2 className="section__title">Rzeczy na których najlepiej trzepiemy kase</h2>
+							<h2 className="section__title">Best sales</h2>
 						</Col>
 						{
 							loading ? <h5 className="fw-bold">Ładowanko....</h5> : <ProductsList data={bestSalesProducts} />
@@ -131,7 +130,7 @@ const Home = () => {
 						<Col lg="6" md="12" className="count__down-col">
 							<div className="clock__top-content">
 								<h4 className="text-white fs-6 mb-2">Limmited offer</h4>
-								<h3 className="text-white fs-5 mb-3">Dojcze kłalitat krzesło</h3>
+								<h3 className="text-white fs-5 mb-3">Yes, a chair</h3>
 							</div>
 							<Clock />
 
@@ -152,7 +151,7 @@ const Home = () => {
 				<Container>
 					<Row>
 						<Col lg="12" className="text-center mb-5">
-							<h2 className="section__title">Nowości świeżutkie jak ruscy poborowi na froncie</h2>
+							<h2 className="section__title">Recently added</h2>
 						</Col>
 						{
 							loading ? <h5 className="fw-bold">Ładowanko....</h5> : <ProductsList data={mobileProducts} />
@@ -171,7 +170,7 @@ const Home = () => {
 				<Container>
 					<Row>
 						<Col lg="12" className="text-center mb-5">
-							<h2 className="section__title">Popularne w danej kategorii</h2>
+							<h2 className="section__title">Popular in specific category</h2>
 						</Col>
 						{
 							loading ? <h5 className="fw-bold">Ładowanko....</h5> : <ProductsList data={popularProducts} />

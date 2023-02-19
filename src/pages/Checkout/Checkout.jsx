@@ -1,3 +1,4 @@
+// Importowanie potrzebnych modułów i komponentów
 import React from "react";
 import "./checkout.css";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
@@ -7,14 +8,17 @@ import CommonSection from "../../components/UI/CommonSection/CommonSection";
 import { useSelector } from "react-redux";
 
 const Checkout = () => {
-
-	const totalQuantity = useSelector(state => state.cart.totalQuantity);
-	const totalAmount = useSelector(state => state.cart.totalAmount);
+	// Pobranie danych z koszyka przy pomocy hooka useSelector
+	const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+	const totalAmount = useSelector((state) => state.cart.totalAmount);
 
 	return (
+		// Ustawienie tytułu dla strony przy pomocy komponentu Helmet
 		<Helmet title="Checkout">
+			{/* Dodanie sekcji Checkout przy pomocy komponentu CommonSection */}
 			<CommonSection title="Checkout" />
 			<section>
+				{/* Utworzenie formularza z danymi do faktury */}
 				<Container>
 					<Row>
 						<Col lg="8">
@@ -50,6 +54,7 @@ const Checkout = () => {
 							</Form>
 						</Col>
 						<Col lang="4">
+							{/* Wyświetlenie podsumowania zamówienia */}
 							<div className="checkout__cart">
 								<h6>
 									Total Quantity: <span>{totalQuantity} itemków</span>
@@ -66,10 +71,9 @@ const Checkout = () => {
 								</h6>
 								<h4>
 									Total Cost: <span>${totalAmount}</span>
-								</h4>							
+								</h4>
 								<button className="buy__btn final__buy__btn auth__btn w-100">Złóż zamówienie/pakt z diabłem</button>
 							</div>
-
 						</Col>
 					</Row>
 				</Container>

@@ -1,15 +1,17 @@
+// Importowanie niezbędnych modułów
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import "./dashboard.css"
+import "./dashboard.css";
 
-import useGetData from "../../custom-hooks/useGetData"
+// Importowanie hooka do pobierania danych
+import useGetData from "../../custom-hooks/useGetData";
 
 const Dashboard = () => {
+	// Pobieranie danych produktów i użytkowników z użyciem hooka
+	const { data: products } = useGetData("products");
+	const { data: users } = useGetData("users");
 
-
-  const {data: products} = useGetData('products')
-  const {data: users} = useGetData('users')
-
+	// Renderowanie sekcji z danymi statystycznymi
 	return (
 		<>
 			<section>

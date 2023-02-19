@@ -1,3 +1,4 @@
+// Importowanie potrzebnych bibliotek i konfiguracji firebase
 import React, { useState } from "react";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
@@ -8,7 +9,9 @@ import { collection, addDoc } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 
+// Komponent AddProducts
 const AddProducts = () => {
+	// Ustawienie stanu potrzebnych zmiennych
 	const [enterTitle, setEnterTitle] = useState("");
 	const [enterShortDescription, setEnterShortDescription] = useState("");
 	const [enterDescription, setEnterDescription] = useState("");
@@ -19,17 +22,10 @@ const AddProducts = () => {
 
 	const navigate = useNavigate();
 
+	// Funkcja dodająca produkt do bazy danych
 	const addProduct = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		/*const product ={
-      title: enterTitle,
-      shortDescription: enterShortDescription,
-      description: enterDescription,
-      category: enterCategory,
-      price: enterPrice,
-      imgUrl: enterProductImg
-    }; */
 
 		// ======add product to the firebase database ======
 
@@ -130,7 +126,7 @@ const AddProducts = () => {
 												value={enterCategory}
 												onChange={(e) => setEnterCategory(e.target.value)}
 											>
-											<option>Select Category</option>
+												<option>Select Category</option>
 												<option value="chair">Chair</option>
 												<option value="sofa">Sofa</option>
 												<option value="mobile">Mobile</option>

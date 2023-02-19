@@ -1,15 +1,17 @@
+// Importujemy React oraz plik CSS dla tego komponentu
 import React from "react";
 import "./cart.css";
+
+// Importujemy komponenty zewnętrzne oraz moduły
 import Helmet from "../../components/Helmet/Helmet";
 import CommonSection from "../../components/UI/CommonSection/CommonSection";
 import { Container, Row, Col } from "reactstrap";
-
 import { motion } from "framer-motion";
 import { cartActions } from "../../redux/slices/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Link } from "react-router-dom";
 
+// Definiujemy komponent funkcyjny Cart
 const Cart = () => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -44,20 +46,21 @@ const Cart = () => {
 						</Col>
 						<Col lg="3">
 							<div>
-								<h6 className="d-flex align-items-center justify-content-between">Subtotal
-								<span className="fs-4 fw-bold">${totalAmount}</span>
+								<h6 className="d-flex align-items-center justify-content-between">
+									Subtotal
+									<span className="fs-4 fw-bold">${totalAmount}</span>
 								</h6>
-								</div>
-								<p className="fs-6 mt-2">Taxes angd shipping will calculate in checkout</p>
-								<div>
-									<button className="buy__btn w-100">
-										<Link to="/shop">Continue Shopping</Link>
-									</button>
+							</div>
+							<p className="fs-6 mt-2">Taxes angd shipping will calculate in checkout</p>
+							<div>
+								<button className="buy__btn w-100">
+									<Link to="/shop">Continue Shopping</Link>
+								</button>
 
-									<button className="buy__btn w-100 mt-3">
-										<Link to="/checkout">Checkout</Link>
-									</button>
-								</div>
+								<button className="buy__btn w-100 mt-3">
+									<Link to="/checkout">Checkout</Link>
+								</button>
+							</div>
 						</Col>
 					</Row>
 				</Container>
@@ -66,12 +69,17 @@ const Cart = () => {
 	);
 };
 
+// Definiujemy komponent funkcyjny Tr, który reprezentuje pojedynczy wiersz w tabeli
 const Tr = ({ item }) => {
+	// Definiujemy funkcję deleteProduct i pobieramy dispatch
 	const dispatch = useDispatch();
 
+	// Funkcja, która wywołuje akcję usuwania przedmiotu z koszyka
 	const deleteProduct = () => {
 		dispatch(cartActions.deleteItem(item.id));
 	};
+
+	// Renderujemy wiersz
 	return (
 		<tr>
 			<td>
