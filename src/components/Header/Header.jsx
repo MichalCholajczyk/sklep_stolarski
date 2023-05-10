@@ -42,6 +42,8 @@ const nav__links = [
 
 const Header = () => {
 	// Ustawienie referencji do elementów DOM
+	const favorites = useSelector((state) => state.favorites.favorites); // nowy kod
+
 
 	const headerRef = useRef(null);
 
@@ -93,6 +95,11 @@ const Header = () => {
 
 	const menuToggle = () => menuRef.current.classList.toggle("active__menu");
 
+
+	const navigateTofavourities = () => {
+		navigate("/favourites");
+	};
+
 	// Funkcja przekierowująca do koszyka
 
 	const navigateToCart = () => {
@@ -128,9 +135,10 @@ const Header = () => {
 						</div>
 
 						<div className="nav__icons">
-							<span className="fav__icon">
+							<span className="fav__icon"
+							onClick={navigateTofavourities}>
 								<i class="ri-heart-line"></i>
-								<span className="badge">1</span>
+								<span className="badge">{favorites.length}</span>
 							</span>
 							<span className="cart__icon" onClick={navigateToCart}>
 								<i class="ri-shopping-cart-2-line"></i>

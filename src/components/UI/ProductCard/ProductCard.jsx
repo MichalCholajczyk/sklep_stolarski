@@ -9,9 +9,24 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../redux/slices/cartSlice";
 import { toast } from "react-toastify";
+import { addFavorite } from '../../../redux/favoritesSlice';
+
+
+
+
 
 // Funkcja wyświetlająca pojedynczą kartę produktu
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, hideFavoriteButton }) => {
+
+	const addToFavorites = () => {
+		dispatch(addFavorite({
+			id: item.id,
+			productName: item.productName,
+			price: item.price,
+			imgUrl: item.imgUrl,
+		}));
+	};
+	
 	// Deklaracja funkcji dispatch z Redux
 	const dispatch = useDispatch();
 
@@ -49,8 +64,13 @@ const ProductCard = ({ item }) => {
 					<span className="price">${item.price}</span>
 					<motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}>
 						<i class=" roundBuy__btn ri-add-line"></i>
+					</motion.span>{!hideFavoriteButton && (
+						<motion.span whileTap={{ scale: 1.2 }}  onClick={addToFavorites}>
+						<i class=" roundBuy__btn1 ri-add-line "></i>
 					</motion.span>
+					)}
 				</div>
+				
 			</div>
 		</Col>
 	);

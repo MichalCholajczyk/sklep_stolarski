@@ -1,5 +1,6 @@
 // Importujemy funkcję configureStore z biblioteki @reduxjs/toolkit
 import { configureStore } from "@reduxjs/toolkit";
+import favoritesReducer from "./favoritesSlice"; // nowy import
 
 // Importujemy nasz slice z koszykiem z pliku cartSlice.js
 import cartSlice from "./slices/cartSlice";
@@ -8,6 +9,8 @@ import cartSlice from "./slices/cartSlice";
 const store = configureStore({
 	reducer: {
 		cart: cartSlice,
+		favorites: favoritesReducer, // dodajemy nowy reducer
+
 	},
 });
 

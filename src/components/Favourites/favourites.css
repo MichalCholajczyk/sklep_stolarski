@@ -1,0 +1,32 @@
+/* Favorites.css */
+
+.favorites-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.favorites-page h1 {
+  font-size: var(--heading-fontSize);
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product__img{
+  margin: 20px;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .favorites-page {
+    margin: 20px auto;
+  }
+}

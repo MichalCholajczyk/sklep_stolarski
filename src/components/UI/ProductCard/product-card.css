@@ -38,6 +38,9 @@
 .roundBuy__btn:hover {
 	background-color: rgb(92, 92, 92);
 }
+.roundBuy__btn1:hover {
+	background-color: rgb(215, 11, 0);
+}
 
 @media only screen and (max-width: 992px) {
 	.product__info h3 a {
