@@ -14,7 +14,7 @@ import AddProducts from "../admin/AddProducts/AddProducts";
 import AllProducts from "../admin/AllProducts/AllProducts";
 import Dashboard from "../admin/Dashboard/Dashboard";
 import Users from "../admin/Users/Users";
-import Favourites from "../components/Favourites/Favourities.jsx";
+import Favorites from "../components/Favorites/Favorities";
 
 const Routers = () => {
 	return (
@@ -24,7 +24,7 @@ const Routers = () => {
 			<Route path="shop" element={<Shop />} />
 			<Route path="shop/:id" element={<ProductDetails />} />
 			<Route path="cart" element={<Cart />} />
-			<Route path="/favourites" element={<Favourites />} />
+			<Route path="/favorites" element={<Favorites />} />
 
 
 			<Route path="/*" element={<ProtectedRoute />}>

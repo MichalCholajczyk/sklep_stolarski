@@ -97,7 +97,7 @@ const Header = () => {
 
 
 	const navigateTofavourities = () => {
-		navigate("/favourites");
+		navigate("/favorites");
 	};
 
 	// Funkcja przekierowująca do koszyka

@@ -1,66 +1,66 @@
-// Importowanie potrzebnych bibliotek i konfiguracji firebase
+// AddProducts.jsx
+
 import React, { useState } from "react";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
-
 import { db, storage } from "../../firebase.config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
-
 import { useNavigate } from "react-router-dom";
 
-// Komponent AddProducts
 const AddProducts = () => {
-	// Ustawienie stanu potrzebnych zmiennych
 	const [enterTitle, setEnterTitle] = useState("");
 	const [enterShortDescription, setEnterShortDescription] = useState("");
 	const [enterDescription, setEnterDescription] = useState("");
 	const [enterPrice, setEnterPrice] = useState("");
 	const [enterCategory, setEnterCategory] = useState("");
-	const [enterProductImg, setEnterProductImg] = useState(null);
+	const [enterProductImg, setEnterProductImg] = useState([]);
 	const [loading, setLoading] = useState(false);
 
 	const navigate = useNavigate();
 
-	// Funkcja dodająca produkt do bazy danych
 	const addProduct = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 
-		// ======add product to the firebase database ======
-
 		try {
 			const docRef = await collection(db, "products");
+			const imgUrls = [];
 
-			const storageRef = ref(storage, `productImages/${Date.now() + enterProductImg.name}`);
-			const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
+			for (const file of enterProductImg) {
+				const storageRef = ref(storage, `productImages/${Date.now() + file.name}`);
+				const uploadTask = uploadBytesResumable(storageRef, file);
 
-			uploadTask.on(
-				() => {
-					toast.error("images not uploaded!");
-				},
-				() => {
-					getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-						await addDoc(docRef, {
-							productName: enterTitle,
-							shortDescription: enterShortDescription,
-							description: enterDescription,
-							category: enterCategory,
-							price: enterPrice,
-							//Addoc error i error 404 pokazywało sie ponieważ zamiast downloadURL napisałem enterProductImg. i wanna die
-							imgUrl: downloadURL,
+				uploadTask.on(
+					"state_changed",
+					() => {},
+					() => {
+						toast.error("images not uploaded!");
+					},
+					() => {
+						getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+							imgUrls.push(downloadURL);
+							if (imgUrls.length === enterProductImg.length) {
+								addDoc(docRef, {
+									productName: enterTitle,
+									shortDescription: enterShortDescription,
+									description: enterDescription,
+									category: enterCategory,
+									price: Number(enterPrice),
+									imgUrls: downloadURL,
+								});
+								setLoading(false);
+								toast.success("product added successfully");
+								navigate("/dashboard/all-products");
+							}
 						});
-					});
-				}
-			);
+					}
+				);
+			}
+		} catch (error) {
 			setLoading(false);
-			toast.success("product added successfully");
-			navigate("/dashboard/all-products");
-		} catch (error) {}
-
-		setLoading(false);
-		toast.error("Product not added");
-		//   console.log(product);
+			toast.error("Product not added");
+		}
 	};
 
 	return (
@@ -135,11 +135,10 @@ const AddProducts = () => {
 											</select>
 										</FormGroup>
 									</div>
-
 									<div>
 										<FormGroup className="form__group">
 											<span>Product image</span>
-											<input type="file" onChange={(e) => setEnterProductImg(e.target.files[0])} />
+											<input type="file" multiple onChange={(e) => setEnterProductImg([...e.target.files])} />
 										</FormGroup>
 									</div>
 									<button className="buy__btn btn " type="submit">

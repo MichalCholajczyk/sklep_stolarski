@@ -1,3 +1,7 @@
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+
 // Import React i kilka modułów z react-router i bibliotek zewnętrznych oraz kilka komponentów i hooków React
 import React, { useState, useRef, useEffect } from "react";
 import "./productDetails.css";
@@ -21,7 +25,7 @@ import useGetData from "../../custom-hooks/useGetData";
 const ProductDetails = () => {
 	// Użyj hook useState do przechowywania danych produktu (nazwy, opisu, obrazka, kategorii, ceny)
 	const [product, setProduct] = useState({
-		imgUrl: "",
+		imgUrls: [],
 		productName: "",
 		price: "",
 		description: "",
@@ -101,9 +105,19 @@ const ProductDetails = () => {
 			<section className="pt-0">
 				<Container>
 					<Row>
-						<Col lg="6">
-							<img src={imgUrl} alt="" />
-						</Col>
+					<Col lg="6">
+    {product.imgUrls.length ? (
+        <Carousel>
+            {product.imgUrls.map((url, index) => (
+                <div key={index}>
+                    <img src={url} alt={productName} />
+                </div>
+            ))}
+        </Carousel>
+    ) : (
+        <p>Brak obrazów dla tego produktu.</p>
+    )}
+</Col>
 
 						<Col lg="6">
 							<div className="product__details">
